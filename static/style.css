@@ -34,6 +34,17 @@ header {
   text-shadow: 2px 2px 4px #ff0000;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* espaço entre o holofote e o texto */
+}
+
+.holofote {
+  height: 40px; /* ajuste como quiser */
+  width: auto;
+}
+
 .subtexto {
   font-family: 'Courier Prime', monospace;
   margin-top: 10px;
