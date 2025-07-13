@@ -32,12 +32,13 @@ header {
   font-size: 3.5em;
   color: gold;
   text-shadow: 2px 2px 4px #ff0000;
+  margin: 0;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 10px; /* espaço entre o holofote e o texto */
+  gap: 8px; /* espaço entre o holofote e o texto */
 }
 
 .holofote {
