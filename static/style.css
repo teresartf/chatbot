@@ -11,7 +11,7 @@ body, html {
 }
 
 body {
-  background-color: black;
+  background-color: #D6B27B ;
   color: white;
   font-family: Arial, sans-serif;
   height: 100vh;
@@ -128,7 +128,7 @@ main {
 }
 
 textarea {
-  width: 100%;
+  width: 80%;
   height: 80px;
   resize: none;
   background: #2a0000;
