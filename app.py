@@ -15,44 +15,53 @@ def index():
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    texto = request.form.get('texto', '')
+    texto = request.form.get('texto', '').strip()
     imagem = request.files.get('imagem')
 
-    # ✅ Recupera o histórico que veio do front
+    # recupera o histórico da conversa
     historico = request.form.get('historico')
     try:
         historico = [] if not historico else json.loads(historico)
     except:
         historico = []
 
-    # ✅ Começa com o histórico anterior (se houver)
     parts = historico.copy()
 
-    # ✅ Adiciona a nova entrada do usuário
-    parts.append({
-        "text": (
-            "Você é um assistente de cinema. "
-            "Responda apenas perguntas relacionadas a filmes, diretores, atores, gêneros, lançamentos ou premiações. "
-            "Se a pergunta não for sobre cinema, diga que você só responde sobre esse tema. "
-            f"A pergunta do usuário é: {texto}"
-        )
-    })
+    # contexto
+    prompt_text = (
+        "Você é um assistente especializado em filmes e séries. "
+        "Responda apenas perguntas relacionadas a filmes, séries, atores, diretores, gêneros, lançamentos e premiações. "
+        "Se a pergunta não for sobre esses temas, informe educadamente que só responde sobre cinema e séries.\n\n"
+    )
 
-    # ✅ Se houver imagem, adiciona como parte visual
+    # Se enviou texto, adiciona à mensagem de contexto
+    if texto:
+        prompt_text += f"Pergunta do usuário: {texto}\n"
+
+    # Se enviou imagem, adicionar uma descrição para o assistente
     if imagem:
         try:
             imagem_bytes = imagem.read()
             imagem_b64 = base64.b64encode(imagem_bytes).decode()
+
+            # Adiciona a imagem como parte do contexto para a API
             parts.append({
                 "inlineData": {
                     "mimeType": imagem.mimetype,
                     "data": imagem_b64
                 }
             })
+
+            prompt_text += (
+                "O usuário enviou um pôster de filme/série em anexo. "
+                "Analise o pôster para ajudar a responder a pergunta, se possível.\n"
+            )
         except Exception as e:
             return jsonify({"resposta": f"Erro ao processar imagem: {e}", "historico": historico})
 
-    # ✅ Envia tudo como contexto acumulado
+    # Adiciona o prompt gerado ao contexto da conversa
+    parts.append({"text": prompt_text.strip()})
+
     body = {
         "contents": [
             {
@@ -70,16 +79,22 @@ def chat():
         data = response.json()
         print("Resposta bruta da API:", data)
 
-        if "candidates" not in data:
+        if "candidates" not in data or not data['candidates']:
             return jsonify({
-                "resposta": "Erro: a API Gemini não retornou candidatos.",
+                "resposta": "Erro: a API Gemini não retornou resposta válida.",
                 "historico": historico
             })
 
         resposta = data['candidates'][0]['content']['parts'][0].get('text', 'Sem texto na resposta.')
 
-        # ✅ Atualiza histórico para enviar de volta
-        novo_historico = historico + [{"text": texto}, {"text": resposta}]
+        # adiciona pergunta (texto e/ou "pôster enviado") e resposta do bot
+        novo_historico = historico + []
+        if texto:
+            novo_historico.append({"text": texto})
+        if imagem:
+            novo_historico.append({"text": "[Usuário enviou um pôster]"})
+
+        novo_historico.append({"text": resposta})
 
         return jsonify({
             "resposta": resposta,
