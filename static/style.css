@@ -11,7 +11,7 @@ body, html {
 }
 
 body {
-  background-color: #D6B27B ;
+  background-color: black;
   color: white;
   font-family: Arial, sans-serif;
   height: 100vh;
@@ -39,7 +39,7 @@ header {
   margin-top: 10px;
   font-size: 1.2em;
   font-style: italic;
-  color: white;
+  color: #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +131,7 @@ textarea {
   width: 80%;
   height: 80px;
   resize: none;
-  background: #a60000;
+  background: #2a0000;
   color: white;
   border: 1px solid gold;
   border-radius: 12px;
