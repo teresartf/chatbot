@@ -33,7 +33,8 @@ async function enviarPergunta() {
   const btn = document.getElementById('btn-enviar');
   const mensagensDiv = document.getElementById('mensagens');
 
-  if (!texto.trim()) return;
+  // ✅ Só impede se não tiver texto nem imagem
+  if (!texto.trim() && !imagemInput.files[0]) return;
 
   btn.disabled = true;
 
@@ -44,9 +45,14 @@ async function enviarPergunta() {
     formData.append('imagem', imagemInput.files[0]);
   }
 
-  // Mensagem do usuário
-  const msgUsuario = criarMensagem('usuario', texto);
-  mensagensDiv.appendChild(msgUsuario);
+  // ✅ Mostra mensagem do usuário (texto ou só pôster)
+  if (texto.trim()) {
+    const msgUsuario = criarMensagem('usuario', texto);
+    mensagensDiv.appendChild(msgUsuario);
+  } else if (imagemInput.files[0]) {
+    const msgUsuario = criarMensagem('usuario', "[Pôster enviado 🎞️]");
+    mensagensDiv.appendChild(msgUsuario);
+  }
 
   // Mensagem temporária do bot
   const msgBot = criarMensagem('bot', 'CineBot está pensando...');
