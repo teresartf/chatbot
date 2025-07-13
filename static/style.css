@@ -39,7 +39,7 @@ header {
   margin-top: 10px;
   font-size: 1.2em;
   font-style: italic;
-  color: #ccc;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +131,7 @@ textarea {
   width: 80%;
   height: 80px;
   resize: none;
-  background: #2a0000;
+  background: #a60000;
   color: white;
   border: 1px solid gold;
   border-radius: 12px;
