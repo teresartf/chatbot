@@ -27,39 +27,42 @@ def chat():
 
     parts = historico.copy()
 
-    # contexto
+    # início do prompt
     prompt_text = (
         "Você é um assistente especializado em filmes e séries. "
         "Responda apenas perguntas relacionadas a filmes, séries, atores, diretores, gêneros, lançamentos e premiações. "
         "Se a pergunta não for sobre esses temas, informe educadamente que só responde sobre cinema e séries.\n\n"
     )
 
-    # Se enviou texto, adiciona à mensagem de contexto
-    if texto:
+    # Se enviou imagem mas não enviou texto
+    if imagem and not texto:
+        prompt_text += (
+            "O usuário enviou um pôster de filme ou série, mas não forneceu nenhum texto. "
+            "Analise o pôster com atenção, tente identificar o filme ou série, "
+            "e forneça informações cruciais sobre ele, como elenco, diretor, ano e enredo. "
+            "Se possível, instigue o usuário a querer saber mais sobre o filme."
+        )
+
+    # Se enviou texto
+    elif texto:
         prompt_text += f"Pergunta do usuário: {texto}\n"
 
-    # Se enviou imagem, adicionar uma descrição para o assistente
+    # Se enviou imagem (sempre adiciona ao contexto visual)
     if imagem:
         try:
             imagem_bytes = imagem.read()
             imagem_b64 = base64.b64encode(imagem_bytes).decode()
 
-            # Adiciona a imagem como parte do contexto para a API
             parts.append({
                 "inlineData": {
                     "mimeType": imagem.mimetype,
                     "data": imagem_b64
                 }
             })
-
-            prompt_text += (
-                "O usuário enviou um pôster de filme/série em anexo. "
-                "Analise o pôster para ajudar a responder a pergunta, se possível.\n"
-            )
         except Exception as e:
             return jsonify({"resposta": f"Erro ao processar imagem: {e}", "historico": historico})
 
-    # Adiciona o prompt gerado ao contexto da conversa
+    # Adiciona o prompt final ao contexto
     parts.append({"text": prompt_text.strip()})
 
     body = {
@@ -87,8 +90,8 @@ def chat():
 
         resposta = data['candidates'][0]['content']['parts'][0].get('text', 'Sem texto na resposta.')
 
-        # adiciona pergunta (texto e/ou "pôster enviado") e resposta do bot
-        novo_historico = historico + []
+        # adiciona pergunta (texto e/ou pôster) e resposta do bot
+        novo_historico = historico.copy()
         if texto:
             novo_historico.append({"text": texto})
         if imagem:
