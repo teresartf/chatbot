@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>CineBot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="logo">CineBot</h1>
+      <p class="subtexto">
+        <img src="{{ url_for('static', filename='imagens/seta2.png') }}" class="seta-lateral" alt="Seta">
+        <span>Mande uma pergunta de cinema ou envie um pôster!</span>
+      </p>    
+    </header>
+
+    <main>
+      <div id="mensagens" class="mensagens"></div>
+
+      <form class="input-area" onsubmit="event.preventDefault(); enviarPergunta();">
+        <textarea id="user-input" placeholder="Digite sua pergunta..."></textarea>
+        <div class="controls">
+          <input type="file" id="image-input" accept="image/*">
+          <button id="btn-enviar">Enviar</button>
+          <button id="btn-limpar" type="button">Nova Conversa</button>
+          <img src="{{ url_for('static', filename='imagens/ingresso.png') }}" class="ingressos" alt="Ingressos">
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <img src="{{ url_for('static', filename='imagens/claquete.png') }}" class="claquete" alt="Claquete">
+      <p class="logo-footer">CineBot</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

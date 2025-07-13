@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5em;
+  color: gold;
+  text-shadow: 2px 2px 4px #ff0000;
+}
+
+.subtexto {
+  font-family: 'Courier Prime', monospace;
+  margin-top: 10px;
+  font-size: 1.2em;
+  font-style: italic;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.subtexto img {
+  align-self: flex-start; /* seta fica no topo do container flex */
+}
+
+.subtexto span {
+  display: inline-block;
+  margin-top: 50px; /* empurra o texto pra baixo */
+}
+
+.seta-lateral {
+  width: 100px;
+  height: auto;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.mensagens {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mensagem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px 20px;
+  border-radius: 20px;
+  font-size: 1em;
+  line-height: 1.4;
+  word-break: break-word;
+  max-width: 70%;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  background-image: linear-gradient(to bottom right, rgba(255,215,0,0.1), rgba(255,215,0,0.03));
+}
+
+.usuario {
+  align-self: flex-end;
+  background: linear-gradient(to right, #fffacd, #ffd700);
+  color: black;
+}
+
+.bot {
+  align-self: flex-start;
+  background: linear-gradient(to left, #3d0000, #1a0000);
+  color: white;
+  border: 1px solid #ffb6b6;
+}
+
+.icone-msg {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.usuario-icone {
+  width: 32px;
+  height: 32px;
+}
+
+.bot-icone {
+  width: 60px;
+  height: 60px;
+}
+
+/* INPUT */
+.input-area {
+  margin-top: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 80px;
+  resize: none;
+  background: #2a0000;
+  color: white;
+  border: 1px solid gold;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ingressos {
+  width: 120px;
+  height: auto;
+  margin-left: -30px;
+}
+
+button {
+  background: #a60000;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid gold;
+  cursor: pointer;
+  box-shadow: 0 0 10px gold;
+}
+
+button:hover {
+  background: gold;
+  color: #a60000;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid gold;
+  padding-top: 20px;
+}
+
+.claquete {
+  width: 80px;
+  margin-bottom: 5px;
+}
+
+.logo-footer {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2em;
+  color: gold;
+  text-shadow: 1px 1px 3px #a60000;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.06) 0%, transparent 80%);
+  animation: girarLuz 15s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes girarLuz {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Elevar z-index dos elementos acima da luz */
+header, main, footer {
+  position: relative;
+  z-index: 1;
+}
