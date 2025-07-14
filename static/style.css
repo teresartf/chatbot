@@ -150,16 +150,12 @@ main {
 }
 
 @media (min-width: 600px){
-  .input-area{
-    flex-direction: row;
-    align-items: center;
-  }
-
   .container {
     max-width: 900px;
     margin: 0 auto;
   }
 }
+
 
 textarea {
   width: 100%;
