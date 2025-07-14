@@ -62,10 +62,9 @@ header {
 .container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1rem;
+  width: 100%;
 }
-
-
 
 .subtexto img {
   align-self: flex-start; /* seta fica no topo do container flex */
@@ -155,6 +154,11 @@ main {
   .input-area{
     flex-direction: row;
     align-items: center;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
   }
 }
 
