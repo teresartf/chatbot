@@ -55,10 +55,11 @@ header {
 
 .holofote {
   position: absolute;
-  left: -40px;
+  left: 0;
+  transform: translateX(-100%);
   top: 50%;
-  transform: translateY(-50%);
-  height: 120px;
+  transform: translate(-100%, -50%);
+  height: 100px;
   max-width: 100%;
   z-index: 1;
 }
@@ -69,12 +70,12 @@ header {
   }
 
   .holofote {
-    left: -10px;
-    height: 90px;
+    transform: translate(-90%, -50%);
+    height: 80px;
   }
 
   .subtexto span {
-    margin-top: 20px; /* mais colado */
+    margin-top: 20px; 
   }
 }
 
