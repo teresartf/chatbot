@@ -14,6 +14,7 @@ body {
   background-color: black;
   color: white;
   font-family: Arial, sans-serif;
+  font-size: 2em;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,7 +39,7 @@ header {
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 8px; /* espaço entre o holofote e o texto */
+  gap: 0; /* espaço entre o holofote e o texto */
 }
 
 .holofote {
@@ -57,6 +58,14 @@ header {
   justify-content: center;
   gap: 10px;
 }
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
 
 .subtexto img {
   align-self: flex-start; /* seta fica no topo do container flex */
@@ -137,10 +146,22 @@ main {
 /* INPUT */
 .input-area {
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 600px){
+  .input-area{
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 textarea {
+  flex: 1;
   width: 100%;
+  max-width: 600px;
   height: 80px;
   resize: none;
   background: #2a0000;
