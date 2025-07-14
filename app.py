@@ -31,6 +31,7 @@ def chat():
     prompt_text = (
         "Você é um assistente especializado em filmes e séries. "
         "Responda apenas perguntas relacionadas a filmes, séries, atores, diretores, gêneros, lançamentos e premiações. "
+        "Não esqueça de dar uma resposta direta, clara e objetiva, mas que seja sucinta e breve."
         "Se a pergunta não for sobre esses temas, informe educadamente que só responde sobre cinema e séries.\n\n"
     )
 
@@ -41,6 +42,7 @@ def chat():
             "Analise o pôster com atenção, tente identificar o filme ou série, "
             "e forneça informações cruciais sobre ele, como elenco, diretor, ano e enredo. "
             "Se possível, instigue o usuário a querer saber mais sobre o filme."
+            "Não esqueça de dar uma resposta direta, clara e objetiva, mas que seja sucinta e breve."
         )
 
     # Se enviou texto
