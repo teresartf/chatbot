@@ -179,13 +179,12 @@ textarea {
 }
 
 .controls button {
-  font-size: 0.6em;
-  padding: 6px 10px;
-  white-space: nowrap;
-  width: auto;
-  max-width: 120px;
-  flex: none;
+  font-size: 0.7em;
+  padding: 8px 16px;
+  white-space: normal;
+  min-width: 140px;
   text-align: center;
+  line-height: 1.2;
 }
 
 #image-input {
@@ -199,7 +198,7 @@ textarea {
   width: 80px;
   height: auto;
   margin-top: 10px;
-  margin-left: auto;
+  margin-left: 10px;
 }
 
 button {
