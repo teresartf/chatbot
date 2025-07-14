@@ -40,7 +40,9 @@ header {
   font-size: 3rem;
   color: gold;
   text-shadow: 2px 2px 4px #ff0000;
-  margin: 0;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 2;
 }
 
 .logo-container {
@@ -48,15 +50,32 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
 .holofote {
   position: absolute;
-  left: 220px;
+  left: -40px;
   top: 50%;
   transform: translateY(-50%);
-  height: 150px;
+  height: 120px;
   max-width: 100%;
+  z-index: 1;
+}
+
+@media (max-width: 600px) {
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .holofote {
+    left: -10px;
+    height: 90px;
+  }
+
+  .subtexto span {
+    margin-top: 20px; /* mais colado */
+  }
 }
 
 .subtexto {
