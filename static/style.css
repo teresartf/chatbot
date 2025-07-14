@@ -142,9 +142,8 @@ main {
   height: 60px;
 }
 
-/* INPUT */
 .input-area {
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -163,24 +162,39 @@ main {
 }
 
 textarea {
-  flex: 1;
   width: 100%;
-  max-width: 600px;
-  height: 80px;
-  resize: none;
-  background: #2a0000;
+  height: 100px;
+  background: #7e0000; /* vinho mais claro */
   color: white;
   border: 1px solid gold;
   border-radius: 12px;
-  padding: 10px;
-  font-size: 1em;
-  margin-bottom: 10px;
+  padding: 14px;
+  font-size: 1.1em;
+  box-sizing: border-box;
+  resize: none;
 }
 
 .controls {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controls button{
+  width: auto;
+  padding: 14px;
+  font-size: 1.1em;
+  flex: 1; 
+  max-width: 200px;
+}
+
+#image-input {
+  padding: 8px;
+  background-color: #fdf5e6;
+  border-radius: 10px;
+  color: black;
 }
 
 .ingressos {
