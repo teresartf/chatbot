@@ -62,7 +62,7 @@ header {
 .subtexto {
   font-family: 'Courier Prime', monospace;
   margin-top: 10px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-style: italic;
   color: #ccc;
   display: flex;
