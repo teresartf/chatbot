@@ -75,7 +75,6 @@ header {
 
 .subtexto {
   font-family: 'Courier Prime', monospace;
-  margin-top: 10px;
   font-size: 1.2rem;
   font-style: italic;
   color: #ccc;
@@ -83,7 +82,12 @@ header {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  flex-wrap: wrap;
+  margin-top: 10px;
+  flex-wrap: nowrap;
+}
+
+.subtexto span {
+  margin-top: 0;
 }
 
 .container {
@@ -99,10 +103,10 @@ header {
   height: auto;
 }
 
-.subtexto span {
+/* .subtexto span {
   display: inline-block;
   margin-top: 50px;
-}
+} */
 
 .seta-lateral {
   width: 80px;
@@ -257,6 +261,11 @@ footer {
   font-size: 1.5rem;
   color: gold;
   text-shadow: 1px 1px 3px #a60000;
+}
+
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 body::before {

@@ -10,10 +10,12 @@
 <body>
   <div class="container">
     <header>
-      <div class="logo-container">
-        <img src="{{ url_for('static', filename='imagens/holofote.png') }}" class="holofote" alt="Holofote">
-        <h1 class="logo">CineBot</h1>
-      </div>
+      <div class="logo-wrapper">
+        <div class="logo-container">
+          <img src="{{ url_for('static', filename='imagens/holofote.png') }}" class="holofote" alt="Holofote">
+          <h1 class="logo">CineBot</h1>
+        </div>
+      </div>      
       
       <p class="subtexto">
         <img src="{{ url_for('static', filename='imagens/seta2.png') }}" class="seta-lateral" alt="Seta">
