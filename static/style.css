@@ -8,7 +8,7 @@
 
 html, body {
   overflow-x: hidden;
-  font-size: 16px; /* base para rem */
+  font-size: 16px; 
 }
 
 body {
@@ -39,7 +39,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px; /* distância entre holofote e logo */
+  gap: 5px; 
   flex-wrap: nowrap;
   flex-direction: row;
 }
@@ -111,6 +111,12 @@ header {
 .seta-lateral {
   width: 80px;
   height: auto;
+}
+
+@media (min-width: 768px) {
+  .seta-lateral {
+    transform: translateY(-25px);
+  }
 }
 
 main {
